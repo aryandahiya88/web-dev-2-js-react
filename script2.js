@@ -42,14 +42,85 @@
 //     //clearing text
 //     studentname.value=""
 
-function print(){
-    console.log("inside print")
-}
-function greet(print){
+// function print(){
+//     console.log("inside print")
+// }
+// function greet(print){
+//     setTimeout(()=>{
+//         console.log("hello students.")
+//         print()
+//     },2000)
+// }
+
+// greet(print)
+
+
+// console.log("before timeout")
+// setTimeout(()=>{
+//     console.log("inside timeout")
+// })
+// console.log("after timeout")
+// /////////////////////////////////////////////////////////////////////////
+// function greet(callback){  //callback func
+//     setTimeout(()=>{
+//         console.log("hello students")
+//     },2000)
+//     console.log("heelo students")
+// }
+
+// function print(sample,num){   //higher order func
+//     sample()
+//     console.log("Total students are",num)
+// }
+
+// print(greet,45)
+// /////////////////////////////////////////////////////////////////////////
+
+
+// console.log("starting homework.....")
+// setTimeout(()=>{
+//     console.log("homework done......");
+//     console.log("starting dinner.....");
+
+//     setTimeout(()=>{
+//         console.log("dinner done...");
+//         console.log("getting ready to go out");
+
+//         setTimeout(()=>{
+//             console.log("going to playground.......");
+            
+//         },1000);
+
+//     },1500);
+
+// },2000);
+
+
+function finishedHomework(callback){
+    console.log("starting homework......"); 
     setTimeout(()=>{
-        console.log("hello students.")
-        print()
-    },2000)
+        console.log("homework done!");
+        callback();
+    },2000);
 }
 
-greet(print)
+function eatDinner(callback){
+    console.log("starting dinner....");
+    setTimeout(()=>{
+        console.log("dinner done!");
+        callback();
+    })
+}
+function goToPlayground(){
+    console.log("going to playground!");
+}
+
+finishedHomework(){
+    eatDinner(){
+        goToPlayground(){
+
+        }
+
+    }
+}
+
