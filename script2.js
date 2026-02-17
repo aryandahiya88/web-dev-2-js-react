@@ -96,31 +96,135 @@
 // },2000);
 
 
-function finishedHomework(callback){
-    console.log("starting homework......"); 
-    setTimeout(()=>{
-        console.log("homework done!");
-        callback();
-    },2000);
-}
+// function finishedHomework(callback){
+//     console.log("starting homework......"); 
+//     setTimeout(()=>{
+//         console.log("homework done!");
+//         callback();
+//     },2000);
+// }
 
-function eatDinner(callback){
-    console.log("starting dinner....");
-    setTimeout(()=>{
-        console.log("dinner done!");
-        callback();
-    })
-}
-function goToPlayground(){
-    console.log("going to playground!");
-}
+// function eatDinner(callback){
+//     console.log("starting dinner....");
+//     setTimeout(()=>{
+//         console.log("dinner done!");
+//         callback();
+//     })
+// }
+// function goToPlayground(){
+//     console.log("going to playground!");
+// }
 
-finishedHomework(){
-    eatDinner(){
-        goToPlayground(){
+// finishedHomework(() => {
+//     eatDinner(() => {
+//         goToPlayground();
+//     });
+// });
 
+// async///////////////////////////////////////////////////////////////////////
+
+// function orderFood(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(()=>{
+//             console.log("Food ordered")
+//             res("food has been ordered")
+//         },2000)
+//     })
+// }
+
+// function prepareFood(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(()=>{
+//             console.log("Food prepared")
+//             res()
+//         },2000)
+//     })
+// }
+
+// function deliverFood(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(()=>{
+//             console.log("Food delivered")
+//             res()
+//         },2000)
+//     })
+// }
+
+
+// async function order(){
+//     // we store our resolve and restore data in a variable and then console it with await
+//     const data=await orderFood()
+//     console.log(data)
+//     await prepareFood()
+//     await deliverFood()
+
+// }
+
+// order()
+////////////////////////////////////////////////////////////////////////////////////////////////
+// orderFood().then((data)=>{
+//     return prepareFood()
+
+// }).then((data)=>{
+//     return deliverFood()
+// }).then((data)=>{
+
+// }).catch((err)=>{
+//     console.log("something went wrong.....")
+// })
+////////////////////////////////////////////////////////////////////////
+
+
+// console.log("first line")
+// try{
+//     // let sample=234
+//     // console.log(sample)
+//     // console.log("line after sample")
+
+//     ////////////
+//     let age=16
+//     if (age<18){
+//         throw new Error("you are not eligible to vote")
+        
+//     }
+// }catch(err){
+//     console.warn(err)       
+// }
+// console.log("last line..")
+
+
+// async function getData(){
+//     const response=await fetch("https://dummyjson.com/products")
+//     // console.log(response)
+
+//     const data=await response.json()
+//     console.log(data)
+//     // console.log(data.products[0].title)
+//     data.products.forEach((product)=>{
+//         console.log(product.title)
+//     })
+// }
+
+// getData()
+
+/////////////////////////////////////////////////////////////
+async function getData(){
+    try{
+        const response=await fetch("https://dummyjson.com/products")
+        console.log(response.status)   //if our response is correct our api will be between 200-299 and if fail 404 and response.ok will be true in 200-299
+        // console.log(response)
+        if(response.ok===false){
+            throw new Error("something went wrong")
         }
-
+        
+        const data=await response.json()
+        console.log(data)
+        // console.log(data.products[0].title)
+        data.products.forEach((product)=>{
+        console.log(product.title)
+    })
+    }catch(err){
+        console.log(err)
     }
 }
-
+getData()
