@@ -208,23 +208,68 @@
 // getData()
 
 /////////////////////////////////////////////////////////////
-async function getData(){
-    try{
-        const response=await fetch("https://dummyjson.com/products")
-        console.log(response.status)   //if our response is correct our api will be between 200-299 and if fail 404 and response.ok will be true in 200-299
-        // console.log(response)
-        if(response.ok===false){
-            throw new Error("something went wrong")
-        }
+// async function getData(){
+//     try{
+//         const response=await fetch("https://dummyjson.com/products")
+//         console.log(response.status)   //if our response is correct our api will be between 200-299 and if fail 404 and response.ok will be true in 200-299
+//         // console.log(response)
+//         if(response.ok===false){
+//             throw new Error("something went wrong")
+//         }
         
-        const data=await response.json()
-        console.log(data)
-        // console.log(data.products[0].title)
-        data.products.forEach((product)=>{
-        console.log(product.title)
+//         const data=await response.json()
+//         console.log(data)
+//         // console.log(data.products[0].title)
+//         data.products.forEach((product)=>{
+//         console.log(product.title)
+//     })
+//     }catch(err){
+//         console.log(err)
+
+//     }finally{
+//         console.log("finally block")
+//     }
+// }
+// getData()
+
+//we use /add whemn we want to post data to backend by /add in link of backend
+async function sendData(){
+    const response= await fetch('https://dummyjson.com/products/add',{
+        method:'POST',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title:"New Product",
+            description:"This is a new product",
+            price:100,
+            discountPercentage:10,
+            rating:4.5,
+            stock:50,
+            brand:"ABC",
+            category:"Electronics"
+        })
     })
-    }catch(err){
-        console.log(err)
-    }
+
+    const data=await response.json()
+    console.log(data)
+
 }
-getData()
+sendData()
+
+localStorage.setItem("Name","Aryan Dahiya")
+localStorage.setItem("Age",18)
+
+console.log(localStorage.getItem("Name"))
+console.log(localStorage.getItem("Age"))
+
+localStorage.removeItem("Name")
+console.log(localStorage.getItem("Name"))  //null
+
+
+// in session storage we store temporary data for one session 
+sessionStorage.setItem("name","Jaat")
+sessionStorage.setItem("age",19)
+
+console.log(sessionStorage.getItem("name"))
+console.log(sessionStorage.getItem("age"))
