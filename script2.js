@@ -233,43 +233,90 @@
 // getData()
 
 //we use /add whemn we want to post data to backend by /add in link of backend
-async function sendData(){
-    const response= await fetch('https://dummyjson.com/products/add',{
-        method:'POST',
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            title:"New Product",
-            description:"This is a new product",
-            price:100,
-            discountPercentage:10,
-            rating:4.5,
-            stock:50,
-            brand:"ABC",
-            category:"Electronics"
-        })
-    })
+// async function sendData(){
+//     const response= await fetch('https://dummyjson.com/products/add',{
+//         method:'POST',
+//         headers:{
+//             "Content-Type":"application/json"
+//         },
+//         body:JSON.stringify({
+//             title:"New Product",
+//             description:"This is a new product",
+//             price:100,
+//             discountPercentage:10,
+//             rating:4.5,
+//             stock:50,
+//             brand:"ABC",
+//             category:"Electronics"
+//         })
+//     })
 
-    const data=await response.json()
-    console.log(data)
+//     const data=await response.json()
+//     console.log(data)
+
+// }
+// sendData()
+
+// localStorage.setItem("Name","Aryan Dahiya")
+// localStorage.setItem("Age",18)
+
+// console.log(localStorage.getItem("Name"))
+// console.log(localStorage.getItem("Age"))
+6
+// localStorage.removeItem("Name")
+// console.log(localStorage.getItem("Name"))  //null
+
+
+// // in session storage we store temporary data for one session 
+// sessionStorage.setItem("name","Jaat")
+// sessionStorage.setItem("age",19)
+
+// console.log(sessionStorage.getItem("name"))
+// console.log(sessionStorage.getItem("age"))
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// document.cookie="name=Alex;expires=Fri , 25 Feb 2026 12:00:00 GHT"
+// document.cookie="age=18;expires=Fri , 25 Feb 2026 12:00:00 GHT"
+
+
+function* generate(){
+    // yield 1
+    // yield 2
+    // yield 3
+    let index=23487839
+    while(true){
+        yield index
+        index++
+    }
 
 }
-sendData()
+const gen=generate()
+console.log(gen)
+console.log(gen.next())
+console.log(gen.next())
+console.log(gen.next())
+console.log(gen.next())
+console.log(gen.next())
 
-localStorage.setItem("Name","Aryan Dahiya")
-localStorage.setItem("Age",18)
+// function add(a,b,c){
+//     return a+b+c
+// }
 
-console.log(localStorage.getItem("Name"))
-console.log(localStorage.getItem("Age"))
+function add(a){
+    return function(b){
+        return function(c){
+            return a+b+c
+        }
+    }
+}
 
-localStorage.removeItem("Name")
-console.log(localStorage.getItem("Name"))  //null
+const first=add(1)
+console.log(first)
+const second=first(2)
+console.log(second)
+console.log(second(3))
 
+console.log(add(1),(2),(3))
 
-// in session storage we store temporary data for one session 
-sessionStorage.setItem("name","Jaat")
-sessionStorage.setItem("age",19)
+// console.log(add(6,8,6))
 
-console.log(sessionStorage.getItem("name"))
-console.log(sessionStorage.getItem("age"))
