@@ -315,7 +315,7 @@ console.log(first)
 const second=first(2)
 console.log(second)
 console.log(second(3))
-
+ 
 console.log(add(1),(2),(3))
 
 // console.log(add(6,8,6))
