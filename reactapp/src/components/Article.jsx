@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import artStyle from "../css/Article.module.css"
 
 function Article() {
     const[count,setCount]=useState(0)
@@ -15,7 +16,7 @@ function Article() {
       <h2>Article</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque maiores nemo obcaecati a quam nihil nobis enim quod cupiditate, ipsam sunt laborum vel numquam, sint accusantium. Vitae aliquam esse culpa.</p>
       <h2>{count}</h2>
-      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleIncrement} class="artStyle.btn">Increment</button>
     </div>
   )
 }
