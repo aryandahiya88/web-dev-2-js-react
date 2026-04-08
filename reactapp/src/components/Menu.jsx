@@ -1,53 +1,50 @@
-// import React from 'react'
-
-// function Menu(props) {
+import React ,{Component}from 'react'
+import { add as addition } from './utility'
+// function Menu() {
+//     console.log(addition(3,4))
 //   return (
-//     <>
-//     <div>Menu</div>
-//     <ul>
+//     <div>
+//       <h1>Menu</h1>
+//       <ul>
+//         <li>Sports</li>
 //         <li>Entertainment</li>
-//         <li>Politics</li>
-//         <li>Tech</li>
-//     </ul>
-//     <button
-//           className="counter"
-//           onClick={() => props.setCount((count) => count + 1)}
-//         >
-//           Count is {props.count}
-//         </button>
-    
+//         <li>Polititcs</li>
 
-//     </>
+//       </ul>
+//     </div>
 //   )
 // }
 
+// export default Menu
 
-import React, { Component } from 'react'
+class Menu extends Component {
+    constructor(){
+        super()
+        this.state={
+            count:0,
+            age:0,
+            name:''
+        }
 
-export default class Menu extends Component {
-    constructor(props){
-        super(props)
     }
-  render() {
-    return (
-      
-        <>
-      <div>Menu</div>
-    <ul>
-        <li>Entertainment</li>
-        <li>Politics</li>
-        <li>Tech</li>
-    </ul>
-    <button
-          className="counter"
-          onClick={() => this.props.setCount((count) => count + 1)}
-        >
-          Count is {this.props.count}
-        </button>
-        </>
-    )
-  }
+    handleIncrement=()=>{
+        this.setState({count:this.state.count+1})
+    }
+    render() {
+        return (
+            <div>
+                <h1>Menu</h1>
+                <ul>
+                    <li>Sports</li>
+                    <li>Entertainment</li>
+                    <li>Polititcs</li>
+                    <li>World</li>
+                </ul>
+                <h2>{this.state.count}</h2>
+                <button onClick={this.handleIncrement}>Increment</button>
+            </div>
+        )
+    }
 }
 
-
-// export default Menu
+export default Menu
